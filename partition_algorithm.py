@@ -4,12 +4,12 @@ from sklearn.cluster import KMeans
 import matrix_util as mut
 
 
-def partitionGraph(graphProcessRequest):
-    adjacency_list = graphProcessRequest['adjacency_list']
-    partition_num = graphProcessRequest['partition_num']
+def partition_graph(graph_process_request):
+    adjacency_list = graph_process_request['adjacency_list']
+    partition_num = graph_process_request['partition_num']
 
     # Construct laplacian
-    a_matrix = mut.adjacencyListToMatrix(adjacency_list)
+    a_matrix = mut.adjacency_list_to_matrix(adjacency_list)
     affinity_matrix = mut.build_affinity_matrix(a_matrix)
     degree_matrix = mut.build_degree_matrix(affinity_matrix)
     d_i = scipy.linalg.fractional_matrix_power(degree_matrix, -0.5)
@@ -24,9 +24,9 @@ def partitionGraph(graphProcessRequest):
 
     kmeans = KMeans(n_clusters=partition_num).fit(normalized_eigen_matrix)
 
-    groupMapping = {}
+    group_mapping = {}
     for i, key in enumerate(adjacency_list):
-        groupMapping[key] = str(kmeans.labels_[i])
+        group_mapping[key] = str(kmeans.labels_[i])
     
 
-    return groupMapping
+    return group_mapping

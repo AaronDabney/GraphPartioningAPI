@@ -2,17 +2,17 @@ import numpy as np
 import math 
 import copy
 
-# for unweighted and non-directional adjacencyLists
-def adjacencyListToMatrix(adjacencyList):
-    size = (len(adjacencyList))
+# for unweighted and non-directional adjacency lists
+def adjacency_list_to_matrix(adjacency_list):
+    size = (len(adjacency_list))
     
     matrix = np.zeros((size, size))
-    for index, key in enumerate(adjacencyList.keys()):
-        neighbours = adjacencyList[key]
+    for index, key in enumerate(adjacency_list.keys()):
+        neighbours = adjacency_list[key]
         for neighbour in neighbours:
-            neighbourIndex = list(adjacencyList.keys()).index(neighbour)
-            matrix[index][neighbourIndex] = 1
-            matrix[neighbourIndex][index] = 1
+            neighbour_index = list(adjacency_list.keys()).index(neighbour)
+            matrix[index][neighbour_index] = 1
+            matrix[neighbour_index][index] = 1
 
     return matrix
 

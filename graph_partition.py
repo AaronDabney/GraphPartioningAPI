@@ -2,10 +2,10 @@ import sys, json
 import numpy as np
 import partition_algorithm
 
-def main(aListJSON):
-    aList = json.loads(aListJSON)
-    partitionData = partition_algorithm.partitionGraph(aList)
-    return partitionData
+def main(adjacency_list_JSON):
+    adjacency_list = json.loads(adjacency_list_JSON)
+    partition_data = partition_algorithm.partition_graph(adjacency_list)
+    return partition_data
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

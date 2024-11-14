@@ -29,7 +29,6 @@ const server = http.createServer(function (req, res) {
     }
 });
 
-// Listen on port 5000
 server.listen(port, '0.0.0.0');
 
 console.log('Server running at http://0.0.0.0:' + port + '/');
